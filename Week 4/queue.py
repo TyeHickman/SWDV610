@@ -34,7 +34,7 @@ class Queue:
             print("Queue is empty")
         else:
             for item in self.items:
-                print(str(self.items.index(item)) + " " +item)
+                print(str(self.items.index(item)) + " " +str(item))
                 # print(item)
 
 def main():
@@ -47,6 +47,7 @@ def main():
     print("--------------")
     myQueue.enqueue("Two")
     myQueue.printQueue()
+    print(myQueue.size())
     print("--------------")
     myQueue.dequeue()
     myQueue.printQueue()
