@@ -49,16 +49,15 @@ class BinHeap:
             self.percDown(i)
             i = i - 1
 
-
-# myList = [10,42,18,91,27,8,34,6]
-#TODO: Generate a list of random numbers
-myHeap = BinHeap()
-
-
-#TODO: Write a function that adds a number from the list to the tree and prints the heap
-
-
-# myHeap.buildHeap(myList)
-# print(myHeap.heaplist)
-# myHeap.delMin()
-# print(myHeap.heaplist)
+    # CAUTION: FOR DEMO PURPOSES ONLY
+    def printAsTreeIsh(self,heapL):
+        print("""
+                 ___{}___
+                /        \ 
+              _{}_       _{}_
+             /    \     /    \ 
+            {}     {}  {}    {}
+           /  \   / 
+          {}  {} {}
+        """.format(heapL[1],heapL[2],heapL[3],heapL[4],heapL[5],
+        heapL[6],heapL[7],heapL[8],heapL[9],heapL[10]))
