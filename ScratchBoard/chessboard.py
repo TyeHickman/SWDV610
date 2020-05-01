@@ -3,41 +3,53 @@ from graphics import *
 
 WN_MULT = 100
 
-# window = g.GraphWin("ChessBoard",800,800)
-a1 = g.Rectangle(Point(0,0), Point(100,100))
-a2 = g.Rectangle(Point(0,100),Point(100,200))
-a3 = g.Rectangle(Point(0,200),Point(100,300))
-
-
-squares = []
-squares.append(a1)
-squares.append(a2)
-squares.append(a3)
-
-def getBoard():
-    bSize = int(input("Board Size: "))
-    bSize = bSize * WN_MULT
-    win = g.GraphWin("ChessBoard " + str(bSize), bSize,bSize)
+def getBoard(boardSize):
+    # bSize = int(input("Board Size: "))
+    bSize = boardSize * WN_MULT
+    win = g.GraphWin("ChessBoard " + str(boardSize)+"x"+str(boardSize), bSize,bSize)
     return win
 
+# Returns a dictionary with a key of column/row coordinate like "a1" and 
+# Value needed to draw the corresponding rectangle
 def genSquares(boardSize):
-    
-
-def genBoard(window,squaresList):
-    i=0
-    for square in squaresList:
-        i = i+1
-        square.setOutline('black')
-        if i % 2:
-            square.setFill('black')
-        square.draw(window)
-
-
+    sqDict  = {}
+    #This loop applies chr and ord to generate a letter of a column
+    for i in range(boardSize):
+        colChar = chr(ord('a') + i)
+        x = i * WN_MULT
+        x2 = x + WN_MULT
+        for j in range(boardSize):
+            # create row nums
+            rowNum = j + 1
+            y = j * WN_MULT
+            y2 = y + WN_MULT
+            # print(colChar + str(rowNum) + "tlPoint: " + str(x) + " " + str(y) + " brPoint: " + str(x2) + " " + str(y2))
+            sqId = colChar + str(rowNum)
+            sqRect = g.Rectangle(Point(x,y),Point(x2,y2))
+            sqDict[sqId] = sqRect
+    return sqDict
 
 def main():
-    bWin = getBoard()
+    bSize = int(input("Board Size: "))
+    bWin = getBoard(bSize)
 
-    genBoard(bWin, squares)
+    # Now I have a nice dictionary with all my squares
+    squares = genSquares(bSize)
+    for key in squares:
+        # print(type(squares[key]))
+        squares[key].draw(bWin)
+    
+    print(squares['a1'])
+    squares['a1'].undraw()
+    squares['a1'].setFill('red')
+    squares['a1'].draw(bWin)
+
+
+    # Line experiment
+
+    mL = Line(squares['a1'].getCenter(),squares['c8'].getCenter())
+    mL.setFill('red')
+    mL.draw(bWin)
 
     bWin.getMouse()
 main()
