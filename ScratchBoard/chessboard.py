@@ -39,6 +39,9 @@ def main():
         # print(type(squares[key]))
         squares[key].draw(bWin)
     
+
+    # Manually undraw, setfill, and redraw
+    # TODO: make a method that does this for 'visited'
     print(squares['a1'])
     squares['a1'].undraw()
     squares['a1'].setFill('red')
