@@ -1,3 +1,9 @@
+# A knight moves in one of the following ways:
+#  (x,y)
+# x = -1 = move down by one square
+# x = 1 = move up by one square
+# y = -2 = move left by two squares
+# y = 2 = move right by two squares
 MOVE_OFFSETS = (
               (-1, -2), ( 1, -2),
     (-2, -1),                     ( 2, -1),
@@ -19,13 +25,12 @@ def knightGraph(bdSize):
                 ktGraph.addEdge(nodeId,nid)
     return ktGraph
 
+# This function also helps map the graph vertices to the chessboard visualization later.
 def posToNodeId(row, column, board_size):
     return (row * board_size) + column
 
 def genLegalMoves(x,y,bdSize):
     newMoves = []
-    # moveOffsets = [(-1,-2),(-1,2),(-2,-1),(-2,1),
-    #                ( 1,-2),( 1,2),( 2,-1),( 2,1)]
     moveOffsets = MOVE_OFFSETS
     for i in moveOffsets:
         newX = x + i[0]
@@ -61,6 +66,7 @@ def knightTour(n,path,u,limit):
             done = True
         return path
 
+# Warnsdorff's Rule is applied here as a heuristic
 def orderByAvail(n):
     resList = []
     for v in n.getConnections():

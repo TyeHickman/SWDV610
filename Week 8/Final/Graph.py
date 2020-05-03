@@ -1,3 +1,5 @@
+#This is my version of the Vertex and Graph classes needed to implement the tour. 
+
 class Vertex:
     def __init__(self,key):
         self.id = key
@@ -45,12 +47,12 @@ class Graph:
     def __contains__(self,n):
         return n in self.vertList
 
-    def addEdge(self,f,t,weight=0):
-        if f not in self.vertList:
-            nv = self.addVertex(f)
-        if t not in self.vertList:
-            nv = self.addVertex(t)
-        self.vertList[f].addNeighbor(self.vertList[t], weight)
+    def addEdge(self,fromV,toV,weight=0):
+        if fromV not in self.vertList:
+            nv = self.addVertex(fromV)
+        if toV not in self.vertList:
+            nv = self.addVertex(toV)
+        self.vertList[fromV].addNeighbor(self.vertList[toV], weight)
 
     def getVertices(self):
         return self.vertList.keys()
