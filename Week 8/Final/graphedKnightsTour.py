@@ -51,7 +51,6 @@ def knightTour(n,path,u,limit):
         u.setColor('gray')
         path.append(u)
         if n < limit:
-            # nbrList = list(u.getConnections())
             nbrList = orderByAvail(u)
             i = 0
             done = False
@@ -78,23 +77,3 @@ def orderByAvail(n):
             resList.append((c,v))
     resList.sort(key=lambda x: x[0])
     return [y[1] for y in resList]
-
-
-
-
-# def main():
-#     # bSize = int(input("Board Size: "))
-#     bSize = 8
-
-#     # kt = find_solution_for(bSize, warnsdorffs_heuristic)
-#     kt = knightGraph(bSize)
-#     # for key in kt:
-#     #     print(key)
-#     kPath = []
-#     kTour = knightTour(0,kPath,kt.getVertex(0),63)
-#     for vert in kTour:
-#         print(vert.getId())
-#     # print(kTour)
-#     # for vert in  kt.getVertices():
-#     #     print(vert)
-# main()

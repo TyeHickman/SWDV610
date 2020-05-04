@@ -51,8 +51,6 @@ def main():
     i = 0
     labelList = genLabels(bSize)
     for key in squares:
-        # vs[i] = squares[key]
-        # label = Text(squares[key].getCenter(),str(key) + " " + str(i))
         label = Text(squares[key].getCenter(),labelList[i])
         squares[key].draw(bWin)
         label.setSize(20)
@@ -73,11 +71,6 @@ def main():
         rp2y = squares[key].getP2().getY()
         if cx >= rp1x and cy >= rp1y and cx < rp2x and cy < rp2y:
             start = key
-        # in case this logic fails, fallback to start of 0
-    #     else:
-    #         start = 1
-    # if start == 1:
-    #     print("Cound not safely discern click; starting a first square")
 
     #now that the board is ready;
     #Get graph of all legal moves
@@ -90,6 +83,7 @@ def main():
     # we consider to be a solution. ex: 8*8 = 64 vertices - a starting vertex = 63 edges to explore.
     searchLimit = (bSize*bSize) - 1
 
+    # print(knightsGraph.getVertex(3))
     knightsTour = knightTour(0,knightsPath,knightsGraph.getVertex(start),searchLimit)
 
     # There is a lot happening here but basically, now that we know the path for the
