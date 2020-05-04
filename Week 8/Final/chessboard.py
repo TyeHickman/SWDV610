@@ -83,7 +83,6 @@ def main():
     # we consider to be a solution. ex: 8*8 = 64 vertices - a starting vertex = 63 edges to explore.
     searchLimit = (bSize*bSize) - 1
 
-    # print(knightsGraph.getVertex(3))
     knightsTour = knightTour(0,knightsPath,knightsGraph.getVertex(start),searchLimit)
 
     # There is a lot happening here but basically, now that we know the path for the
